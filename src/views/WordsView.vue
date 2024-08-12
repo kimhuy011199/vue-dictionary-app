@@ -5,6 +5,7 @@ import { fetchWord } from '@/utils/api';
 import { HttpStatus } from '@/utils/enum';
 import SearchBar from '@/components/SearchBar.vue';
 import Result from '@/components/Result.vue';
+import Header from '@/components/Header.vue';
 import type { Word } from '@/utils/type';
 
 const route = useRoute();
@@ -56,6 +57,7 @@ onMounted(() => {
 <template>
   <main>
     <div class="mx-auto max-w-2xl w-full">
+      <Header />
       <SearchBar />
       <Result v-if="result" :result="result" />
     </div>
