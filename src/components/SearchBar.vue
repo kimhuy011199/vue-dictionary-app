@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import Input from './Input.vue';
 import Button from './SearchButton.vue';
 
 const router = useRouter();
-const searchInput = ref<string>('');
+const route = useRoute();
+const word = route.params.word as string;
+const searchInput = ref<string>(word || '');
 
 const handleSearch = () => {
   if (searchInput.value) {
