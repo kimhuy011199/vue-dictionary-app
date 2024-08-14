@@ -4,7 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: 'hsl(var(--primary))'
+        primary: {
+          100: '#cffafe',
+          DEFAULT: 'var(--primary)',
+        },
+        ring: 'var(--ring)',
       }
     }
   },
