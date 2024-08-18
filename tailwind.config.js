@@ -2,13 +2,16 @@
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
+    fontFamily: {
+      sans: ['Jost', 'sans-serif']
+    },
     extend: {
       colors: {
         primary: {
-          100: '#cffafe',
-          DEFAULT: 'var(--primary)',
+          100: '#dcfce7',
+          DEFAULT: '#16a34a'
         },
-        ring: 'var(--ring)',
+        ring: '#dcfce7'
       }
     }
   },
