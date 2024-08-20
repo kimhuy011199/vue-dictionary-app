@@ -9,7 +9,9 @@ export default {
       colors: {
         primary: {
           100: '#dcfce7',
-          DEFAULT: '#16a34a'
+          500: '#22c55e',
+          DEFAULT: '#16a34a',
+          700: '#15803d'
         },
         ring: '#dcfce7'
       }
