@@ -1,24 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
-import Input from './Input.vue';
-import Button from './SearchButton.vue';
+import { ref, watch } from 'vue';
+import Input from '@/components/Input.vue';
+import { useRouteParams } from '@/composables/useRouteParams';
+import SearchButton from '@/components/SearchButton.vue';
+import { useSearch } from '@/composables/useSearch';
 
-const router = useRouter();
-const route = useRoute();
-const word = route.params.word as string;
-const searchInput = ref<string>(word || '');
+const word = useRouteParams('word');
+const searchInput = ref<string>(word?.value || '');
+const { search } = useSearch(searchInput);
 
-const handleSearch = () => {
-  if (searchInput.value) {
-    router.push({ name: 'words', params: { word: searchInput.value } });
-  }
-};
+// Set the search input value when the route param changes
+watch(word, (newValue) => {
+  searchInput.value = newValue || '';
+});
 </script>
 
 <template>
-  <form class="flex relative w-full" @submit.prevent="handleSearch">
+  <form class="flex relative w-full" @submit.prevent="search">
     <Input v-model="searchInput" />
-    <Button @click="handleSearch">Submit</Button>
+    <SearchButton @click="search" />
   </form>
 </template>
