@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { Word } from '@/utils/type';
+import type { Word } from '@/models/Word';
 import Phonetic from './Phonetic.vue';
-import Meaning from './Meaning.vue';
+import Meanings from './Meanings.vue';
 
 defineProps<{
   result: Word;
@@ -9,8 +9,9 @@ defineProps<{
 </script>
 
 <template>
-  <div class="flex flex-col">
-    <Phonetic />
-    <Meaning />
+  <div class="flex flex-col bg-white rounded-[2rem] mt-4">
+    <Phonetic :phonetic="result.phonetic" :word="result.word" />
+    <div class="h-[1px] w-full bg-primary"></div>
+    <Meanings :meanings="result.meanings" />
   </div>
 </template>
